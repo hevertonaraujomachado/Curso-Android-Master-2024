@@ -80,7 +80,7 @@
         android:layout_marginTop="50dp"/>
 
     <Button
-        android:id="@+id/bt_calcular"
+        android:id="@+id/btnCalcular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Calcular"
@@ -92,13 +92,13 @@
         android:layout_below="@id/numeroDeFaltas"
         android:layout_margin="30dp"/>
     <TextView
-        android:id="@+id/txt_resultado"
+        android:id="@+id/txtResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Aluno Foi Aprovado"
-        android:layout_below="@id/bt_calcular"
+        android:text="Clique no Botão Para Calcular"
+        android:layout_below="@id/btnCalcular"
         android:gravity="center"
         android:layout_centerHorizontal="true"/>
 
