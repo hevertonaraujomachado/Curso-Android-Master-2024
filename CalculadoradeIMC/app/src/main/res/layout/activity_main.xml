@@ -8,79 +8,82 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/gra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
         android:text="Calculadora de IMC"
-        android:textColor="@color/black"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="Informe seu Peso (kg)"
-        app:boxStrokeColor="@color/TEAL_2000"
-        app:hintTextColor="@color/TEAL_4000"
-        app:errorEnabled="true">
+        android:hint="Informe seu Peso(kg)"
+        app:hintTextColor="@color/azulForte"
+        app:boxStrokeColor="@color/azulClaro"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editPeso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="Informe a sua Altura (metro e cm)"
-        app:boxStrokeColor="@color/TEAL_2000"
-        app:hintTextColor="@color/TEAL_4000"
-        app:errorEnabled="true">
+        android:hint="Informe a sua Altura(metro e cm)"
+        app:hintTextColor="@color/azulForte"
+        app:boxStrokeColor="@color/azulClaro"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editAltura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnCalcular"
+        android:id="@+id/btCalcular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="15dp"
         android:text="Calcular IMC"
-        android:background="#125D80"
+        android:textSize="18sp"
+        android:textColor="@color/white"
         android:textAllCaps="false"
-        android:textSize="18sp" />
+        android:padding="15dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/azulForte"
 
+        />
     <TextView
         android:id="@+id/txtResultado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:text=""
-        android:textColor="@color/TEAL_2000"
+        android:text="sssssssssssssss"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textColor="@color/azulForte"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
 
 </LinearLayout>
