@@ -22,12 +22,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:hint="Informe seu Peso(kg)"
         app:hintTextColor="@color/azulForte"
         app:boxStrokeColor="@color/azulClaro"
+        app:errorEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
 
@@ -35,6 +35,7 @@
             android:id="@+id/editPeso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="0123456789,"
             android:inputType="numberDecimal"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -48,6 +49,7 @@
         android:hint="Informe a sua Altura(metro e cm)"
         app:hintTextColor="@color/azulForte"
         app:boxStrokeColor="@color/azulClaro"
+        app:errorEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
 
@@ -55,6 +57,7 @@
             android:id="@+id/editAltura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="0123456789,"
             android:inputType="numberDecimal"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +79,7 @@
         android:id="@+id/txtResultado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="sssssssssssssss"
+        android:text=""
         android:textSize="22sp"
         android:textColor="@color/azulForte"
         android:textStyle="bold"
