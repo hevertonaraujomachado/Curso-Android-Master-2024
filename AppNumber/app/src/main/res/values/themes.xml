@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AppNumber" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+        <item name="colorPrimary">@color/lilas</item>"
+    </style>
+
+    <style name="Theme.AppNumber" parent="Base.Theme.AppNumber" />
+</resources>
