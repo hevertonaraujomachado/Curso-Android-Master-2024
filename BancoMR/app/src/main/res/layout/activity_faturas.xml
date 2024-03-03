@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Faturas">
+
+    <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbarFaturas"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/azulForte"
+    app:title="Faturas"
+    app:titleTextColor="@color/white"
+    app:navigationIcon="@drawable/ic_voltar"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resumo das Faturas"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        />
+    <com.vinaygaba.creditcardview.CreditCardView
+        android:id="@+id/cartaoDeCredito"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/black"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data de Vencimento: 05/03/2024"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sado Parcial: R$ 500,00 Reais"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pagar  Fatura"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:padding="15dp"
+        android:backgroundTint="@color/azulForte"
+        android:layout_margin="20dp"
+        android:textAllCaps="false"
+        />
+
+</LinearLayout>
