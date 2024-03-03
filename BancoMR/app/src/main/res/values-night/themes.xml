@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BancoMR" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimaryVariant">@color/azulForte</item>"
+        <item name="android:statusBarColor">#ff00</item>
+    </style>
+</resources>
