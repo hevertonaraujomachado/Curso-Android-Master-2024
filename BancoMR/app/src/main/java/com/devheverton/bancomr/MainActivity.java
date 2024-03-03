@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent navegarTelaDeSaldo = new Intent(MainActivity.this, Saldo.class);
                 startActivity(navegarTelaDeSaldo);
-finish();
+
             }
         });
         binding.imgFaturas.setOnClickListener(new View.OnClickListener() {
@@ -31,7 +31,7 @@ finish();
             public void onClick(View v) {
                 Intent navegarTelasFaturas = new Intent(MainActivity.this, Faturas.class);
                 startActivity(navegarTelasFaturas);
-                finish();
+
             }
         });
         binding.imgTransferencia.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +39,7 @@ finish();
             public void onClick(View v) {
                 Intent navegarTelasTransferencia = new Intent(MainActivity.this, Transferencia.class);
                 startActivity(navegarTelasTransferencia);
-                finish();
+
             }
         });
         binding.imgPoupanA.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +47,7 @@ finish();
             public void onClick(View v) {
                 Intent navegarTelaPoupanca = new Intent(MainActivity.this, Poupanca.class);
                 startActivity(navegarTelaPoupanca);
-                finish();
+                //finish();
             }
         });
     }

@@ -22,8 +22,9 @@ public class Saldo extends AppCompatActivity {
         binding.toolbarSaldo.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent voltarTelaPrincipal = new Intent(Saldo.this,MainActivity.class);
-                startActivity(voltarTelaPrincipal);
+                //Intent voltarTelaPrincipal = new Intent(Saldo.this,MainActivity.class);
+                //startActivity(voltarTelaPrincipal);
+                finish();
 
             }
         });

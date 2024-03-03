@@ -24,8 +24,9 @@ public class Faturas extends AppCompatActivity {
         binding.toolbarFaturas.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent voltarTelaPrincipal = new Intent(Faturas.this, MainActivity.class);
-                startActivity(voltarTelaPrincipal);
+                //Intent voltarTelaPrincipal = new Intent(Faturas.this, MainActivity.class);
+                //startActivity(voltarTelaPrincipal);
+                finish();
             }
         });
 

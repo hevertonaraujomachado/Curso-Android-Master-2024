@@ -23,8 +23,9 @@ public class Transferencia extends AppCompatActivity {
         binding.toolbarTransferencia.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent voltarTelaPrincipal = new Intent(Transferencia.this,MainActivity.class);
-                startActivity(voltarTelaPrincipal);
+                //Intent voltarTelaPrincipal = new Intent(Transferencia.this,MainActivity.class);
+                //startActivity(voltarTelaPrincipal);
+                finish();
             }
         });
     }

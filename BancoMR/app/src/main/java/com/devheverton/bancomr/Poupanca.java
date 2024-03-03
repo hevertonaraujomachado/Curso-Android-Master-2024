@@ -22,8 +22,9 @@ public class Poupanca extends AppCompatActivity {
         binding.toolbarPoupanca.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent voltarTelaPrincipal = new Intent(Poupanca.this,MainActivity.class);
-                startActivity(voltarTelaPrincipal);
+                //Intent voltarTelaPrincipal = new Intent(Poupanca.this,MainActivity.class);
+                //startActivity(voltarTelaPrincipal);
+                finish();
             }
         });
     }
