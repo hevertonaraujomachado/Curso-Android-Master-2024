@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/azulClaro"
+    android:padding="16dp"
+    tools:context=".AutenticacaoActivity">
+
+    <ImageView
+        android:id="@+id/imageMr"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_margin="50dp"
+        android:src="@drawable/mr"
+        android:layout_marginBottom="20dp"
+         />
+
+    <EditText
+        android:id="@+id/editCadastroEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="Email"
+        android:padding="16dp"
+        android:background="@drawable/bg_edit_text"
+        android:text=""
+
+        />
+
+    <EditText
+        android:id="@+id/editCadastroSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:background="@drawable/bg_edit_text"
+        android:padding="16dp"
+        android:hint="Senha"
+        android:layout_marginTop="-2dp"
+        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        >
+
+        <TextView
+            android:id="@+id/texLogar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Logar" />
+
+        <Switch
+            android:id="@+id/switchAcesso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Cadastre-se" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonAcesso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acessar"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:textAllCaps="false"
+        android:theme="@style/Base.Theme.BancoMR"/>
+
+</LinearLayout>
