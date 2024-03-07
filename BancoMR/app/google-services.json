@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "29347175937",
+    "project_id": "bancomr-28d32",
+    "storage_bucket": "bancomr-28d32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29347175937:android:e755ee7e2e3ec75f79ea00",
+        "android_client_info": {
+          "package_name": "com.devheverton.bancomr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD16mBTK7C4nEMjypKVUnOEMrtgunKCAxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
