@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.NavegaçãoEntreActivities" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/lilas</item>"
+        <item name="android:statusBarColor">@color/red</item>"
+
+
+    </style>
+
+    <style name="Base.Theme.NavegaçãoEntreActivities." parent="Base.Theme.NavegaçãoEntreActivities" />
+</resources>
