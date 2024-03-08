@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".SegundaTela">
+
+    <TextView
+        android:id="@+id/txtSegundaPrimeiraTela"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Segunda Tela"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+    <Button
+        android:id="@+id/btNavegar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Navegar para a Tela 1"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:background="#118D81"
+        android:padding="15dp"
+        android:layout_margin="20dp"/>
+
+</LinearLayout>

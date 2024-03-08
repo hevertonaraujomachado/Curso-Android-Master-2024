@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.NavegaçãoEntreActivities" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">#9310A9</item>"
+        //mudança de cor para status bar superior
+        <item name="android:statusBarColor">@color/lilas</item>
+        <item name="colorSecondary">@color/red</item>
+    </style>
+
+    <style name="Theme.NavegaçãoEntreActivities" parent="Base.Theme.NavegaçãoEntreActivities" />
+</resources>
