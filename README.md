@@ -83,8 +83,3 @@
 ### Módulo 25 - Arquiteturas de Software
 - Aprendizado sobre arquiteturas de software mobile.
 
-### Módulo BÔNUS
-- Módulo complementar com diversas aulas incríveis.
-```
-
-Espero que isso ajude!
