@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "815742616224",
+    "project_id": "app-delivery-eab61",
+    "storage_bucket": "app-delivery-eab61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815742616224:android:2adce7a5bfb345b9ab7fc5",
+        "android_client_info": {
+          "package_name": "com.devheverton.appdelivery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt0Sg_IAf9MUy_pnQWlKtRz8E8XQktVC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
