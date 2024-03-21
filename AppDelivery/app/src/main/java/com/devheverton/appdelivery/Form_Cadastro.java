@@ -45,26 +45,25 @@ import java.util.UUID;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Form_Cadastro extends AppCompatActivity {
-
-    private CircleImageView fotUsuario;
-    private Button bt_selecionarFoto, bt_Cadastrar;
-    private EditText edit_nome, edit_email, edit_senha;
-    private TextView txt_menssagemErro;
+    private CircleImageView fotoUsuario;
+    private Button bt_selecionarFoto,bt_cadastrar;
+    private EditText edit_nome,edit_email,edit_senha;
+    private TextView txt_mensagemErro;
 
     private String usuarioID;
     private Uri mSelecionarUri;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_cadastro);
-        //getSupportActionBar().hide();
+
         IniciarComponentes();
         edit_nome.addTextChangedListener(cadastroTextWatcher);
         edit_email.addTextChangedListener(cadastroTextWatcher);
         edit_senha.addTextChangedListener(cadastroTextWatcher);
 
-        bt_Cadastrar.setOnClickListener(new View.OnClickListener() {
+        bt_cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -76,24 +75,22 @@ public class Form_Cadastro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SelecionarFotoGaleria();
-
             }
-
         });
 
     }
+    public void CadastrarUsuario(View view){
 
-    public void CadastrarUsuario(View view) {
         String email = edit_email.getText().toString();
         String senha = edit_senha.getText().toString();
 
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if (task.isSuccessful()) {
+                if (task.isSuccessful()){
                     SalvarDadosUsuario();
-                    Snackbar snackbar = Snackbar.make(view, "Cadastro realizado com sucesso!", Snackbar.LENGTH_INDEFINITE)
+                    Snackbar snackbar = Snackbar.make(view,"Cadastro realizado com sucesso!",Snackbar.LENGTH_INDEFINITE)
                             .setAction("OK", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -101,42 +98,41 @@ public class Form_Cadastro extends AppCompatActivity {
                                 }
                             });
                     snackbar.show();
-                } else {
+                }else {
+
                     String erro;
 
                     try {
-
                         throw task.getException();
-                    } catch (FirebaseAuthWeakPasswordException e) {
-                        erro = "Coloque uma senha com no minimo 6 caracteres!";
-                    } catch (FirebaseAuthInvalidCredentialsException e) {
-                        erro = "E-mail invalido!";
-                    } catch (FirebaseAuthUserCollisionException e) {
+                    }catch (FirebaseAuthWeakPasswordException e) {
+                        erro = "Coloque uma senha com no mínimo 6 caracteres!";
+                    }catch (FirebaseAuthInvalidCredentialsException e) {
+                        erro = "E-mail inválido!";
+                    }catch (FirebaseAuthUserCollisionException e) {
                         erro = "Esta conta já foi cadastrada!";
-                    } catch (FirebaseNetworkException e) {
+                    }catch (FirebaseNetworkException e){
                         erro = "Sem conexão com a internet!";
-
-                    } catch (Exception e) {
+                    }catch (Exception e){
                         erro = "Erro ao cadastrar o usuário!";
                     }
-                    txt_menssagemErro.setText(erro);
-
+                    txt_mensagemErro.setText(erro);
                 }
             }
         });
     }
 
-    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
+                    if (result.getResultCode() == Activity.RESULT_OK){
                         Intent data = result.getData();
                         mSelecionarUri = data.getData();
 
                         try {
-                            fotUsuario.setImageURI(mSelecionarUri);
-                        } catch (Exception e) {
+                            fotoUsuario.setImageURI(mSelecionarUri);
+                        }catch (Exception e){
                             e.printStackTrace();
                         }
                     }
@@ -144,80 +140,75 @@ public class Form_Cadastro extends AppCompatActivity {
             }
     );
 
-    public void SelecionarFotoGaleria() {
+    public void SelecionarFotoGaleria(){
+
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         activityResultLauncher.launch(intent);
-
-
     }
+
     public void SalvarDadosUsuario(){
 
         String nomeArquivo = UUID.randomUUID().toString();
 
         final StorageReference reference = FirebaseStorage.getInstance().getReference("/imagens/" + nomeArquivo);
-        reference.putFile(mSelecionarUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-    @Override
-    public void onSuccess(Uri uri) {
+        reference.putFile(mSelecionarUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
 
-        //Log.i("url_img", uri.toString());
-        String foto = uri.toString();
+                                String foto = uri.toString();
 
-        String nome = edit_nome.getText().toString();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                //Iniciar o banco de dados - Firestore
+                                String nome = edit_nome.getText().toString();
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        Map<String, Object> usuarios = new HashMap<>();
-        usuarios.put("nome", nome);
-        usuarios.put("foto", foto);
+                                Map<String,Object> usuarios = new HashMap<>();
+                                usuarios.put("nome",nome);
+                                usuarios.put("foto",foto);
 
-        usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        DocumentReference documentReference = db.collection("Usuario").document(usuarioID);
-        documentReference.set(usuarios).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Log.i("db",  "Sucesso ao salvar os dados! ");
+                                DocumentReference documentReference = db.collection("Usuarios").document(usuarioID);
+                                documentReference.set(usuarios).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Log.i("db","Sucesso ao salvar os dados!");
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull  Exception e) {
+                                        Log.i("db_error","Erro ao salvar os dados!" + e.toString());
+                                    }
+                                });
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.i("db_error",  "Erro ao salvar os dados!" + e.toString() );
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull  Exception e) {
 
-            }
-        });
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull  Exception e) {
 
-
-    }
-}).addOnFailureListener(new OnFailureListener() {
-    @Override
-    public void onFailure(@NonNull Exception e) {
-
-    }
-});
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });
+                    }
+                });
     }
 
-
-    public void IniciarComponentes() {
-        fotUsuario = findViewById(R.id.fotoUsuario);
+    public void IniciarComponentes(){
+        fotoUsuario = findViewById(R.id.fotoUsuario);
         bt_selecionarFoto = findViewById(R.id.bt_selecionarFoto);
-        bt_Cadastrar = findViewById(R.id.bt_Cadastrar);
         edit_nome = findViewById(R.id.edit_nome);
         edit_email = findViewById(R.id.edit_email);
         edit_senha = findViewById(R.id.edit_senha);
-        txt_menssagemErro = findViewById(R.id.txt_mensagemErro);
-
-
+        txt_mensagemErro = findViewById(R.id.txt_mensagemErro);
+        bt_cadastrar = findViewById(R.id.bt_Cadastrar);
     }
 
     TextWatcher cadastroTextWatcher = new TextWatcher() {
@@ -228,24 +219,23 @@ reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             String nome = edit_nome.getText().toString();
             String email = edit_email.getText().toString();
-            String semha = edit_senha.getText().toString();
+            String senha = edit_senha.getText().toString();
 
-            if (!nome.isEmpty() && !email.isEmpty() && !semha.isEmpty()) {
-                bt_Cadastrar.setEnabled(true);
-                bt_Cadastrar.setBackgroundColor(getResources().getColor(R.color.dark_red));
-            } else {
-                bt_Cadastrar.setEnabled(false);
-                bt_Cadastrar.setBackgroundColor(getResources().getColor(R.color.gray));
+            if (!nome.isEmpty() && !email.isEmpty() && !senha.isEmpty()){
+                bt_cadastrar.setEnabled(true);
+                bt_cadastrar.setBackgroundColor(getResources().getColor(R.color.dark_red));
+            }else {
+                bt_cadastrar.setEnabled(false);
+                bt_cadastrar.setBackgroundColor(getResources().getColor(R.color.gray));
             }
         }
-
 
         @Override
         public void afterTextChanged(Editable s) {
 
         }
-
     };
 }
