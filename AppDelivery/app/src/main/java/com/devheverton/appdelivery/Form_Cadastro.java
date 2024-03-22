@@ -74,6 +74,7 @@ public class Form_Cadastro extends AppCompatActivity {
         bt_selecionarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 SelecionarFotoGaleria();
             }
         });
