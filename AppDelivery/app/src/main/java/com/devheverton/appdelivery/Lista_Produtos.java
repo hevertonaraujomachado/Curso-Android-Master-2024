@@ -6,19 +6,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.devheverton.appdelivery.Adapter.AdapterProduto;
+import com.devheverton.appdelivery.Model.Produto;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Lista_Produtos extends AppCompatActivity {
 
     private RecyclerView recyclerView_produtos;
+    private AdapterProduto adapterProduto;
+    private List<Produto> produtoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,35 @@ public class Lista_Produtos extends AppCompatActivity {
         setContentView(R.layout.activity_lista_produtos);
 
 recyclerView_produtos = findViewById(R.id.recycleView_produtos);
+produtoList = new ArrayList<>();
+adapterProduto = new AdapterProduto(getApplicationContext(),produtoList);
+recyclerView_produtos.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+recyclerView_produtos.setHasFixedSize(true);
+recyclerView_produtos.setAdapter(adapterProduto);
+
+Produto produto = new Produto(R.drawable.ic_launcher_background,  "Produto 1", "R$ 50,00");
+produtoList.add(produto);
+
+        Produto produto2 = new Produto(R.drawable.ic_launcher_background,  "Produto 1", "R$ 50,00");
+        produtoList.add(produto2);
+
+        Produto produto3 = new Produto(R.drawable.ic_launcher_background,  "Produto 1", "R$ 50,00");
+        produtoList.add(produto);
+
+        Produto produto4 = new Produto(R.drawable.ic_launcher_background,  "Produto 1", "R$ 50,00");
+        produtoList.add(produto4);
+
+        Produto produto5 = new Produto(R.drawable.ic_launcher_background,  "Produto 1", "R$ 50,00");
+        produtoList.add(produto5);
+
+        Produto produto6 = new Produto(R.drawable.ic_launcher_background,  "Produto 1", "R$ 50,00");
+        produtoList.add(produto6);
+
+        Produto produto7 = new Produto(R.drawable.ic_launcher_background,  "Produto 1", "R$ 50,00");
+        produtoList.add(produto7);
+
+
+
 
     }
 

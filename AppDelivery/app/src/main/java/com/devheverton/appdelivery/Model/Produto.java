@@ -8,6 +8,12 @@ public class Produto {
     private String descricao;
 
 
+    public Produto(int foto, String nome, String preco) {
+        this.foto = foto;
+        this.nome = nome;
+        this.preco = preco;
+    }
+
     public int getFoto() {
         return foto;
     }
