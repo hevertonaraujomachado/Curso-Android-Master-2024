@@ -62,7 +62,7 @@ public class AdapterProduto extends RecyclerView.Adapter<AdapterProduto.ProdutoV
             foto = itemView.findViewById(R.id.fotoProduto);
             nome = itemView.findViewById(R.id.nomeProduto);
             preco = itemView.findViewById(R.id.precoProduto);
-
+            descricao = itemView.findViewById(R.id.dt_descricaoProduto);
         }
     }
 }
