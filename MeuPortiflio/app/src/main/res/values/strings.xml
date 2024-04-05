@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Meu Portifólio</string>
+    <string name="txt_nomeUsuario">Leonardo Campo</string>
+    <string name="txt_descricao">
+
+        Leonardo Campos é um desenvolvedor Android sênior com uma paixão inigualável pela criação de experiências digitais inovadoras. Com mais de uma década de experiência
+        no desenvolvimento de aplicativos móveis, ela traz consigo um profundo entendimento do ecossistema Android e uma dedicação incansável à excelência técnica.
+
+
+        Habilidades
+
+        Desenvolvimento Android: Especialista em Kotlin, Leonardo possui uma profunda compreensão do desenvolvimento Android nativo, entregando aplicativos robustos e eficientes.
+        Arquitetura de Software: Experiente na implementação de arquiteturas modernas como MVVM, Clean Architecture e Jetpack Compose, garantindo código modular e de fácil manutenção.
+
+        Testes Automatizados: Firme defensor da qualidade do software, Leonardo implementa testes automatizados de unidade e UI para garantir a estabilidade e a confiabilidade de cada aplicativo.
+        Mentoria e Liderança Técnica: Além de suas habilidades técnicas, Leonardo destaca-se como mentor, compartilhando conhecimento e orientando equipes para alcançarem seu melhor desempenho.
+    </string>
+    <string name="txt_botao_projetos">Projetos</string>
+    <string name="txt_botao_contato">Contato</string>
+</resources>
