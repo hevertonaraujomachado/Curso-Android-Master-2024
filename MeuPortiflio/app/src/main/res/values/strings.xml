@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Meu Portifólio</string>
+    <string name="txt_nomeUsuario">Leonardo Campo</string>
+    <string name="txt_descricao">
+
+        Leonardo Campos é um desenvolvedor Android sênior com uma paixão inigualável pela criação de experiências digitais inovadoras. Com mais de uma década de experiência
+        no desenvolvimento de aplicativos móveis, ela traz consigo um profundo entendimento do ecossistema Android e uma dedicação incansável à excelência técnica.
+         \n\n\n
+        <b>Habilidades</b>
+        \n\n
+        <b><font color='#ff0000'>Desenvolvimento Android:</font></b> Especialista em Kotlin, Leonardo possui uma profunda compreensão do desenvolvimento Android nativo, entregando aplicativos robustos e eficientes.
+        \n\n
+        <b><font color='#ff0000'>Arquitetura de Software: </font></b>Experiente na implementação de arquiteturas modernas como MVVM, Clean Architecture e Jetpack Compose, garantindo código modular e de fácil manutenção.
+  \n\n
+        <b><font color='#ff0000'>Testes Automatizados: </font></b>irme defensor da qualidade do software, Leonardo implementa testes automatizados de unidade e UI para garantir a estabilidade e a confiabilidade de cada aplicativo.
+\n\n
+       <b><font color='#ff0000'>Mentoria e Liderança Técnica:</font></b>Além de suas habilidades técnicas, Leonardo destaca-se como mentor, compartilhando conhecimento e orientando equipes para alcançarem seu melhor desempenho.
+    \n\n
+    </string>
+    <string name="txt_botao_projetos">Projetos</string>
+    <string name="txt_botao_contato">Contato</string>
+    <string name="txt_botao_projetos_pessoais">Detalhes do Projeto</string>
+
+
+    <string name="title_toolbar_contato">Contato</string>
+    <string name="title_toolbar_projetos">Projetos</string>
+    <string name="txt_phone">+55(86)9-9999-0000</string>
+    <string name="txt_email">leonardo@gmail.com</string>
+    <string name="txt_projeto1">Projeto Barbearia</string>
+    <string name="txt_projeto2">Projeto Pizzaria</string>
+    <string name="txt_projeto3">Projeto Mercenaria</string>
+</resources>

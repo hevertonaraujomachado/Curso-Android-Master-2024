@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MeuPortifólio" parent="Theme.Material3.DayNight.NoActionBar">
+      <item name="android:statusBarColor">@color/blue</item>
+    </style>
+    
+    <style name="TelaDeContato" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:statusBarColor">@color/dark_green</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TelaDeProjetos" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+    <style name="Theme.MeuPortifólio" parent="Base.Theme.MeuPortifólio" />
+    <style name="Theme.TelaDeContato" parent="TelaDeContato"/>
+    <style name="Theme.TelaDeProjetos" parent="TelaDeProjetos"/>
+</resources>
