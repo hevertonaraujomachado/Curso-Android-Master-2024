@@ -10,6 +10,7 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/imgFotoPerfil"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/foto_perfil"
@@ -30,7 +31,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:background="@drawable/borda_scroll"
+        >
 
         <TextView
             android:layout_width="match_parent"
@@ -41,6 +44,7 @@
             />
 
     </ScrollView>
+
     
     <Button
         android:id="@+id/btProjetos"
