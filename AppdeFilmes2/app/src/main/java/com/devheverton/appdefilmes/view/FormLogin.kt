@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.devheverton.appdefilmes.R
 import com.devheverton.appdefilmes.databinding.ActivityFormLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class FormLogin : AppCompatActivity() {
     private lateinit var binding: ActivityFormLoginBinding
@@ -33,6 +34,9 @@ class FormLogin : AppCompatActivity() {
                     binding.containerSenha.helperText = "Preecha a senha!"
                     binding.containerSenha.boxStrokeColor = Color.parseColor("#FF9800")
                 }
+                else -> {
+                   autenticacao(email,senha)
+                }
             }
         }
         binding.txtTelaCadastro.setOnClickListener {
@@ -41,5 +45,9 @@ class FormLogin : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun autenticacao(email: String, senha : String) {
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha)
     }
 }
