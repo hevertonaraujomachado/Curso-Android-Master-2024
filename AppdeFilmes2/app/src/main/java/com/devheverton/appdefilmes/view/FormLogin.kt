@@ -3,6 +3,7 @@ package com.devheverton.appdefilmes.view
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -48,6 +49,29 @@ class FormLogin : AppCompatActivity() {
     }
 
     private fun autenticacao(email: String, senha : String) {
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha)
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener { autenticacao ->
+            if(autenticacao.isSuccessful){
+                Toast.makeText(this,"Login efetuado com sucesso!", Toast.LENGTH_SHORT).show()
+                navegarTelaPrincipal()
+            }
+
+        }.addOnFailureListener {
+            Toast.makeText(this,"Erro ao fazer o login do usuário!", Toast.LENGTH_SHORT).show()
+        }
+
+        }
+    private fun navegarTelaPrincipal(){
+        val intent = Intent(this,TelaPrincipal::class.java)
+        startActivity(intent)
+        finish()
+    }
+    override fun onStart() {
+        super.onStart()
+
+        val usuarioAtual = FirebaseAuth.getInstance().currentUser
+
+        if (usuarioAtual != null){
+            navegarTelaPrincipal()
+        }
     }
 }
