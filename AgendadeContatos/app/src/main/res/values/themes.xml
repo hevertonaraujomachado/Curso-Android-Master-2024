@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AgendaDeContatos" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/rocho</item>"
+        //mudança de cor para status bar superior
+        <item name="android:statusBarColor">@color/rocho</item>"
+    </style>
+
+    <style name="Theme.AgendaDeContatos" parent="Base.Theme.AgendaDeContatos" />
+</resources>
