@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "832468784856",
+    "project_id": "aplicativo-de-filmes-3c467",
+    "storage_bucket": "aplicativo-de-filmes-3c467.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832468784856:android:977cf4aa5497bdc4d529ad",
+        "android_client_info": {
+          "package_name": "com.devheverton.appdefilmes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7m8PPzDzE6P2fcw3U2ItzukcyN1fIxzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
