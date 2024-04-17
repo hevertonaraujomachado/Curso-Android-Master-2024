@@ -31,6 +31,7 @@ class TelaPrincipal : AppCompatActivity() {
     private lateinit var adapterCategoria: AdapterCategoria
     private val listaCategoria: MutableList<Categoria> = mutableListOf()
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTelaPrincipalBinding.inflate(layoutInflater)
@@ -71,7 +72,7 @@ class TelaPrincipal : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Categorias>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(applicationContext, "Erro ao buscar todos os filmes", Toast.LENGTH_SHORT).show()
             }
         })
 
