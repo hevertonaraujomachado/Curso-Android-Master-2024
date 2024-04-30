@@ -3,25 +3,28 @@ package com.devheverton.lojavirtual.activities.FormLogin
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.os.Handler
+import android.os.Looper
+
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.devheverton.lojavirtual.R
+
 import com.devheverton.lojavirtual.activities.FormCadastro.FormCadastro
 import com.devheverton.lojavirtual.activities.TelaPrincipalProdutos.TelaPrincipalProdutos
+import com.devheverton.lojavirtual.activities.dialog.DialogCarregando
 import com.devheverton.lojavirtual.databinding.ActivityFormLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 class FormLogin : AppCompatActivity() {
-    private lateinit var binding: ActivityFormLoginBinding
+     lateinit var binding: ActivityFormLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar!!.hide()
+
+        val  dialogCarregando = DialogCarregando(this)
 
         binding.btEntrar.setOnClickListener {view ->
             val email = binding.editEmail.text.toString()
@@ -35,13 +38,12 @@ class FormLogin : AppCompatActivity() {
             }else{
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener {tarefa ->
                     if (tarefa.isSuccessful){
-                        val snackbar = Snackbar.make(view, "Sucesso ao fazer o login!", Snackbar.LENGTH_LONG)
-                        snackbar.setBackgroundTint(Color.BLUE)
-                        snackbar.setTextColor(Color.WHITE)
-                        snackbar.show()
-                        val intent = Intent(this,TelaPrincipalProdutos::class.java)
-                        startActivity(intent)
-                        finish()
+                        dialogCarregando.iniciarCarregamentoAlertDialog()
+                        Handler(Looper.getMainLooper()).postDelayed({
+                           irParaTelaDeProdutos()
+                            dialogCarregando.liberarAlertDialog()
+                        },3000)
+
 
                     }
 
@@ -60,4 +62,22 @@ class FormLogin : AppCompatActivity() {
 
             }
         }
-    }}
+
+    }
+    private fun irParaTelaDeProdutos(){
+        val intent = Intent(this,TelaPrincipalProdutos::class.java)
+        startActivity(intent)
+        finish()
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val usuarioAtual = FirebaseAuth.getInstance().currentUser
+
+        if (usuarioAtual != null){
+            irParaTelaDeProdutos()
+        }
+    }
+}

@@ -4,8 +4,13 @@
     <string name="hint_email">Email</string>
     <string name="hint_senha">Senha</string>
     <string name="hint_nome">Nome</string>
+    <string name="texto_dialog_carregando">Carregando...</string>
     <string name="texto_botao_entrar">Entrar</string>
     <string name="texto_botao_cadastrar">Cadastrar</string>
     <string name="texto_tela_cadastro">Não tem conta? cadastre-se agora!</string>
     <string name="titulo_tela_cadastro"><b><font color="#3A3E3C"> Faça seu</font></b> Cadastro</string>
+    <string name="menu_item_perfil">Perfil</string>
+    <string name="menu_item_pedidos">Pedidos</string>
+    <string name="menu_item_deslogar">Sair da Sessão</string>
+    <string name="texto_botao_deslogar">Sair</string>
 </resources>
