@@ -36,39 +36,34 @@ class FormLogin : AppCompatActivity() {
                 snackbar.setTextColor(Color.WHITE)
                 snackbar.show()
             }else{
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener {tarefa ->
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener { tarefa ->
                     if (tarefa.isSuccessful){
                         dialogCarregando.iniciarCarregamentoAlertDialog()
                         Handler(Looper.getMainLooper()).postDelayed({
-                           irParaTelaDeProdutos()
+                            irParaTelaDeProdutos()
                             dialogCarregando.liberarAlertDialog()
                         },3000)
 
-
                     }
-
                 }.addOnFailureListener {
-                    val snackbar = Snackbar.make(view, "Erro ao fazer login", Snackbar.LENGTH_LONG)
+                    val snackbar = Snackbar.make(view,"Erro ao fazer o login!",Snackbar.LENGTH_SHORT)
                     snackbar.setBackgroundTint(Color.RED)
                     snackbar.setTextColor(Color.WHITE)
                     snackbar.show()
-
                 }
-            }
-
-            binding.txtTelaCadastro.setOnClickListener {
-                val intent = Intent(this, FormCadastro::class.java)
-                startActivity(intent)
-
             }
         }
 
+        binding.txtTelaCadastro.setOnClickListener {
+            val intent = Intent(this,FormCadastro::class.java)
+            startActivity(intent)
+        }
     }
+
     private fun irParaTelaDeProdutos(){
         val intent = Intent(this,TelaPrincipalProdutos::class.java)
         startActivity(intent)
         finish()
-
     }
 
     override fun onStart() {

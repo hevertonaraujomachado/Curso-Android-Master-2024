@@ -1,10 +1,13 @@
 package com.devheverton.lojavirtual.model
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.TextView
+import com.devheverton.lojavirtual.adapter.AdapterProduto
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.toObject
 
 class DB {
     fun salvarDadosUsuarios(nome: String){
@@ -18,9 +21,9 @@ class DB {
 
         val documentReference: DocumentReference = db.collection("Usuarios").document(usuarioID)
         documentReference.set(usuarios).addOnSuccessListener {
-            Log.d("DB", "Sucesso ao salvar os dados")
+            Log.d("DB","Sucesso ao salvar os dados!")
         }.addOnFailureListener { erro ->
-            Log.d("DB_ERROR", "Erro ao salvar os dados! ${erro.printStackTrace()}")
+            Log.d("DB_ERROR","Erro ao salvar os dados! ${erro.printStackTrace()}")
         }
     }
 
@@ -37,5 +40,21 @@ class DB {
             }
         }
 
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    fun obterListaDeProdutos(lista_produtos: MutableList<Produto>, adapter_produto: AdapterProduto){
+
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("Produtos").get()
+            .addOnCompleteListener { tarefa ->
+                if (tarefa.isSuccessful){
+                    for (documento in tarefa.result!!){
+                        val produtos = documento.toObject(Produto::class.java)
+                        lista_produtos.add(produtos)
+                        adapter_produto.notifyDataSetChanged()
+                }
+            }
+        }
     }
 }
