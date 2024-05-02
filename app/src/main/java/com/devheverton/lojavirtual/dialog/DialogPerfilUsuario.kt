@@ -1,4 +1,4 @@
-package com.devheverton.lojavirtual.activities.dialog
+package com.devheverton.lojavirtual.dialog
 
 import android.app.Activity
 import android.app.AlertDialog

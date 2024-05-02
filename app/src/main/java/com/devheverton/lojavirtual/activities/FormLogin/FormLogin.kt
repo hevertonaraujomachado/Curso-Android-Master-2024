@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import com.devheverton.lojavirtual.activities.FormCadastro.FormCadastro
 import com.devheverton.lojavirtual.activities.TelaPrincipalProdutos.TelaPrincipalProdutos
-import com.devheverton.lojavirtual.activities.dialog.DialogCarregando
+import com.devheverton.lojavirtual.dialog.DialogCarregando
 import com.devheverton.lojavirtual.databinding.ActivityFormLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth

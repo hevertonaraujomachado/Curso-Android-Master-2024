@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 import com.devheverton.lojavirtual.R
 import com.devheverton.lojavirtual.activities.FormLogin.FormLogin
-import com.devheverton.lojavirtual.activities.dialog.DialogPerfilUsuario
+import com.devheverton.lojavirtual.dialog.DialogPerfilUsuario
 import com.devheverton.lojavirtual.adapter.AdapterProduto
 import com.devheverton.lojavirtual.databinding.ActivityTelaPrincipalProdutosBinding
 import com.devheverton.lojavirtual.model.DB
