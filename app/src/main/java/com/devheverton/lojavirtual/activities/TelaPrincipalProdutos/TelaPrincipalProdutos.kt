@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 import com.devheverton.lojavirtual.R
 import com.devheverton.lojavirtual.activities.FormLogin.FormLogin
+import com.devheverton.lojavirtual.activities.Pedidos.Pedidos
 import com.devheverton.lojavirtual.dialog.DialogPerfilUsuario
 import com.devheverton.lojavirtual.adapter.AdapterProduto
 import com.devheverton.lojavirtual.databinding.ActivityTelaPrincipalProdutosBinding
@@ -50,7 +51,7 @@ class TelaPrincipalProdutos : AppCompatActivity() {
 
         when(item.itemId){
             R.id.perfil -> iniciarDialogPerfilUsuario()
-            R.id.pedidos-> Log.d("p","Pedidos")
+            R.id.pedidos-> iniciarTelaDePedido()
             R.id.sair -> sairUsuario()
 
 
@@ -64,6 +65,14 @@ class TelaPrincipalProdutos : AppCompatActivity() {
         val dialogPerfilUsuario = DialogPerfilUsuario(this)
         dialogPerfilUsuario.iniciarPerfilUsuario()
         dialogPerfilUsuario.recuperarDadosUsuarioBanco()
+    }
+
+    private fun iniciarTelaDePedido(){
+        val intent = Intent(this,Pedidos::class.java)
+        startActivity(intent)
+        finish()
+
+
     }
     private fun sairUsuario(){
         FirebaseAuth.getInstance().signOut()

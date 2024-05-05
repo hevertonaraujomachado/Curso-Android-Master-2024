@@ -57,8 +57,6 @@ public class Pagamento extends AppCompatActivity {
         preco = getIntent().getExtras().getString("preco");
 
 
-
-
         binding.btFazerPagamento.setOnClickListener(v -> {
 
             String bairro = binding.editBairro.getText().toString();
@@ -66,33 +64,29 @@ public class Pagamento extends AppCompatActivity {
             String cidade_estado = binding.editCidadeEstado.getText().toString();
             String celular = binding.editCelular.getText().toString();
 
-            if (bairro.isEmpty() || rua_numero.isEmpty() || cidade_estado.isEmpty() || celular.isEmpty()) {
-                Snackbar snackbar = Snackbar.make(v, "Preencha todos os campos!", Snackbar.LENGTH_SHORT);
+            if (bairro.isEmpty() || rua_numero.isEmpty() || cidade_estado.isEmpty() || celular.isEmpty()){
+                Snackbar snackbar = Snackbar.make(v,"Preencha todos os campos!",Snackbar.LENGTH_SHORT);
                 snackbar.setBackgroundTint(Color.RED);
                 snackbar.setTextColor(Color.WHITE);
                 snackbar.show();
-            } else {
+            }else {
                 criarJsonObject();
-
-
             }
-
-
         });
-
-
-
     }
 
-    private void criarJsonObject() {
+    private void criarJsonObject(){
 
         JsonObject dados = new JsonObject();
 
+        //Primeiro Item
         JsonArray item_lista = new JsonArray();
         JsonObject item;
 
+        //Segundo Item
         JsonObject email = new JsonObject();
 
+        //Terceiro Item - Excluir formas de pagamento - nesse caso vai ser o boleto
         /*JsonObject excluir_tipo_pagamento = new JsonObject();
         JsonArray ids = new JsonArray();
         JsonObject removerBoleto = new JsonObject();*/
@@ -104,26 +98,24 @@ public class Pagamento extends AppCompatActivity {
         item.addProperty("unit_price",Double.parseDouble(preco));
         item_lista.add(item);
 
-
-
         dados.add("items",item_lista);
 
-       String emailUsuario = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        String emailUsuario = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         email.addProperty("email",emailUsuario);
         dados.add("payer",email);
 
-
-        /*ids.add(removerBoleto);
+        /*removerBoleto.addProperty("id","ticket");
+        ids.add(removerBoleto);
         excluir_tipo_pagamento.add("excluded_payment_types",ids);
         excluir_tipo_pagamento.addProperty("installments",2);
 
-        dados.add("payment_methods", excluir_tipo_pagamento);*/
+        dados.add("payment_methods",excluir_tipo_pagamento);*/
 
         Log.d("j",dados.toString());
         criarPreferenciaPagamento(dados);
     }
 
-    private void criarPreferenciaPagamento(JsonObject dados) {
+    private void criarPreferenciaPagamento(JsonObject dados){
 
         String site = "https://api.mercadopago.com";
         String url = "/checkout/preferences?access_token=" + ACCESS_TOKEN;
@@ -152,34 +144,36 @@ public class Pagamento extends AppCompatActivity {
         });
     }
 
-private void criarPagamento(String preferenceId) {
+    private void criarPagamento(String preferenceId){
 
-    final AdvancedConfiguration advancedConfiguration =
-            new AdvancedConfiguration.Builder().setBankDealsEnabled(false).build();
-    new MercadoPagoCheckout
-            .Builder(PUBLIC_KEY, preferenceId)
-            .setAdvancedConfiguration(advancedConfiguration).build()
-            .startPayment(this, 123);
+        final AdvancedConfiguration advancedConfiguration =
+                new AdvancedConfiguration.Builder().setBankDealsEnabled(false).build();
+        new MercadoPagoCheckout
+                .Builder(PUBLIC_KEY, preferenceId)
+                .setAdvancedConfiguration(advancedConfiguration).build()
+                .startPayment(this, 123);
     }
-@Override
-protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
 
-    if (requestCode == 123) {
-        if (resultCode == MercadoPagoCheckout.PAYMENT_RESULT_CODE) {
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-            final Payment pagamento = (Payment) data.getSerializableExtra(MercadoPagoCheckout.EXTRA_PAYMENT_RESULT);
-            respostaMercadoPago(pagamento);
+        if (requestCode == 123) {
+            if (resultCode == MercadoPagoCheckout.PAYMENT_RESULT_CODE) {
 
-        } else if (resultCode == RESULT_CANCELED) {
+                final Payment pagamento = (Payment) data.getSerializableExtra(MercadoPagoCheckout.EXTRA_PAYMENT_RESULT);
+                respostaMercadoPago(pagamento);
 
-        } else {
+            } else if (resultCode == RESULT_CANCELED) {
 
+            } else {
+
+            }
         }
     }
-}
 
-    private void respostaMercadoPago(Payment pagamento) {
+    private void respostaMercadoPago(Payment pagamento){
+
         String status = pagamento.getPaymentStatus();
 
         String bairro = binding.editBairro.getText().toString();
@@ -187,35 +181,26 @@ protected void onActivityResult(final int requestCode, final int resultCode, fin
         String cidade_estado = binding.editCidadeEstado.getText().toString();
         String celular = binding.editCelular.getText().toString();
 
-        String endereco = "Bairro: " +bairro+ " " + "Rua e Número: " + " " + rua_numero + "Cidade e Estado: " + " " + cidade_estado;
+        String endereco = "Bairro: " + bairro + " " + " Rua e Número: " + " " + rua_numero + " Cidade e Estado: " + " " + cidade_estado;
         String status_pagamento = "Status de Pagamento: " + " " + "Pagamento Aprovado";
-        String status_entrega =  "Status de Entrega: " + " " + "Em andamento";
+        String status_entrega = "Status de Entrega: " + " " + "Em andamento";
 
-        String nomeProduto = nome;
-        String precoProduto = preco;
-        String tamanho = tamanho_calcado;
-
+        String nomeProduto = "Nome: " + " " + nome;
+        String precoProduto = "Preço: " + " " + preco;
+        String tamanho = "Tamanho do Calçado: " + " " + tamanho_calcado;
+        String celular_usuario = "Celular: " + " " + celular;
 
         if (status.equalsIgnoreCase("approved")){
-            Snackbar snackbar = Snackbar.make(binding.container, "Sucesso ao fazer o pagamento",Snackbar.LENGTH_SHORT);
+            Snackbar snackbar = Snackbar.make(binding.container,"Sucesso ao fazer o pagamento",Snackbar.LENGTH_SHORT);
             snackbar.setBackgroundTint(Color.BLUE);
             snackbar.setTextColor(Color.WHITE);
             snackbar.show();
-            db.salvarDadosPedidosUsuario(endereco,celular,nomeProduto,precoProduto,tamanho,status_pagamento,status_entrega);
-
+            db.salvarDadosPedidosUsuario(endereco,celular_usuario,nomeProduto,precoProduto,tamanho,status_pagamento,status_entrega);
         }else if (status.equalsIgnoreCase("rejected")){
-
-            Snackbar snackbar = Snackbar.make(binding.container, "Erro ao fazer o pagamento",Snackbar.LENGTH_SHORT);
+            Snackbar snackbar = Snackbar.make(binding.container,"Erro ao fazer o pagamento",Snackbar.LENGTH_SHORT);
             snackbar.setBackgroundTint(Color.RED);
             snackbar.setTextColor(Color.WHITE);
             snackbar.show();
         }
     }
 }
-
-
-
-
-
-
-

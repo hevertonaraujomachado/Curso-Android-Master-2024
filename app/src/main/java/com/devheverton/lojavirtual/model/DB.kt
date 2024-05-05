@@ -3,6 +3,7 @@ package com.devheverton.lojavirtual.model
 import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.TextView
+import com.devheverton.lojavirtual.adapter.AdapterPedido
 import com.devheverton.lojavirtual.adapter.AdapterProduto
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
@@ -87,4 +88,18 @@ class DB {
         }
 
 }
-}
+    @SuppressLint("NotifyDataSetChanged")
+    fun obterListaDePedidos(lista_pedidos: MutableList<Pedido>, adapter_pedidos:AdapterPedido){
+        var db=FirebaseFirestore.getInstance()
+        var usuarioID = FirebaseAuth.getInstance().currentUser!!.uid
+
+        db.collection("Usuario_Pedidos").document(usuarioID).collection("Pedidos")
+            .get().addOnCompleteListener { tarefa ->
+                if(tarefa.isSuccessful){
+                    for (documento in tarefa.result!!){
+                        val pedidos = documento.toObject(Pedido::class.java)
+                        lista_pedidos.add(pedidos)
+                        adapter_pedidos.notifyDataSetChanged()
+                }
+            }
+    }}}
