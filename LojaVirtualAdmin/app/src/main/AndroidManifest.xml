@@ -13,6 +13,9 @@
         android:theme="@style/Theme.LojaVirtualAdmin"
         tools:targetApi="31">
         <activity
+            android:name=".activities.CadastroProdutos"
+            android:exported="false" />
+        <activity
             android:name=".activities.TelaPrincipal"
             android:exported="false" />
         <activity
