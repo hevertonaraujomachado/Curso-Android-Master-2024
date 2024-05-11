@@ -9,6 +9,7 @@
     tools:context=".activities.TelaPrincipal">
 
     <LinearLayout
+        android:id="@+id/containerMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -48,10 +49,28 @@
 
         </LinearLayout>
 
-
-
-
     </LinearLayout>
+<androidx.fragment.app.FragmentContainerView
+    android:id="@+id/containerFragmentProdutos"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:visibility="visible"
+    app:layout_constraintTop_toBottomOf="@id/containerMenu"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/containerFragmentPedidos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/containerMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btCadastroProdutos"

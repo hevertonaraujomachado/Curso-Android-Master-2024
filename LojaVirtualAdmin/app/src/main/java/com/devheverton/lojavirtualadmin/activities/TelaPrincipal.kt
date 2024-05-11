@@ -3,12 +3,18 @@ package com.devheverton.lojavirtualadmin.activities
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.devheverton.lojavirtualadmin.R
 import com.devheverton.lojavirtualadmin.databinding.ActivityTelaPrincipalBinding
+import com.devheverton.lojavirtualadmin.fragments.PedidosFragment
+import com.devheverton.lojavirtualadmin.fragments.ProdutosFragment
 
 class TelaPrincipal : AppCompatActivity() {
 
@@ -18,6 +24,8 @@ class TelaPrincipal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTelaPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        fragmentRender(R.id.containerFragmentProdutos,ProdutosFragment())
 
 binding.btCadastroProdutos.setOnClickListener {
     val intente = Intent(this,CadastroProdutos::class.java)
@@ -30,6 +38,10 @@ binding.btCadastroProdutos.setOnClickListener {
                 binding.btProdutos.setTextColor(Color.WHITE)
                 binding.btPedidos.setBackgroundResource(R.drawable.bg_button_disabled)
                 binding.btPedidos.setTextColor(Color.BLACK)
+
+                binding.containerFragmentProdutos.visibility = View.VISIBLE
+                binding.containerFragmentPedidos.visibility =View.INVISIBLE
+                fragmentRender(R.id.containerFragmentProdutos,ProdutosFragment())
             }
         }
         binding.btPedidos.setOnClickListener {
@@ -40,7 +52,20 @@ binding.btCadastroProdutos.setOnClickListener {
                 binding.btProdutos.setBackgroundResource(R.drawable.bg_button_disabled)
                 binding.btProdutos.setTextColor(Color.BLACK)
 
+             binding.containerFragmentProdutos.visibility = View.INVISIBLE
+             binding.containerFragmentPedidos.visibility =View.VISIBLE
+             fragmentRender(R.id.containerFragmentPedidos,PedidosFragment())
+
             }
         }
     }
+
+    private fun fragmentRender(containerId: Int, fragment: Fragment){
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransition: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransition.add(containerId, fragment)
+        fragmentTransition.commit()
+
+    }
+
 }
