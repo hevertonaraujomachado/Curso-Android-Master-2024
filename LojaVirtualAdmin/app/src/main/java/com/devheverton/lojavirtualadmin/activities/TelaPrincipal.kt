@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +12,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.devheverton.lojavirtualadmin.MainActivity
 import com.devheverton.lojavirtualadmin.R
 import com.devheverton.lojavirtualadmin.databinding.ActivityTelaPrincipalBinding
 import com.devheverton.lojavirtualadmin.fragments.PedidosFragment
 import com.devheverton.lojavirtualadmin.fragments.ProdutosFragment
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 
 class TelaPrincipal : AppCompatActivity() {
 
@@ -26,6 +30,8 @@ class TelaPrincipal : AppCompatActivity() {
         setContentView(binding.root)
 
         fragmentRender(R.id.containerFragmentProdutos,ProdutosFragment())
+
+
 
 binding.btCadastroProdutos.setOnClickListener {
     val intente = Intent(this,CadastroProdutos::class.java)
@@ -57,6 +63,14 @@ binding.btCadastroProdutos.setOnClickListener {
              fragmentRender(R.id.containerFragmentPedidos,PedidosFragment())
 
             }
+        }
+
+        binding.txtSair.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val  intent  = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this," Usuário saiu da sessão!",Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.devheverton.lojavirtualadmin" />
+                  <option name="mobileSdkAppId" value="1:932874309580:android:4c41aba3e58f77d4d5d769" />
+                  <option name="projectId" value="loja-virtual-2fb75" />
+                  <option name="projectNumber" value="932874309580" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
