@@ -1,10 +1,11 @@
 package com.devhevertonaraujo.previsodotempo.model
 
-import org.json.JSONObject
+import com.google.gson.JsonObject
+
 
 data class Main(
-    val main: JSONObject,
-    val sys: JSONObject,
+    val main: JsonObject,
+    val sys: JsonObject,
     val weather : List<Weather>,
     val name: String
 )
