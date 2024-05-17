@@ -1,5 +1,7 @@
 package com.devhevertonaraujo.previsodotempo
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -26,7 +28,59 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+    binding.trocarTema.setOnCheckedChangeListener { buttonView, isChecked ->
+        if (isChecked){ //Tema Escuro - Dark Mode
+            binding.containerPrincipal.setBackgroundColor(Color.parseColor("#000000"))
+            binding.containerInfo.setBackgroundResource(R.drawable.contanier_info_tema_escuro)
+            binding.txtTituloInfo.setTextColor(Color.parseColor("#000000"))
+            binding.txtTituloInformacoes1.setTextColor(Color.parseColor("#000000"))
+            binding.txtTituloInformacoes2.setTextColor(Color.parseColor("#000000"))
+            window.statusBarColor = Color.parseColor("#000000")
+        }else{ //Tema Claro
+            binding.containerPrincipal.setBackgroundColor(Color.parseColor("#396BCB"))
+            binding.containerInfo.setBackgroundResource(R.drawable.container_info_tema_claro)
+            binding.txtTituloInfo.setTextColor(Color.parseColor("#FFFFFF"))
+            binding.txtTituloInformacoes1.setTextColor(Color.parseColor("#FFFFFF"))
+            binding.txtTituloInformacoes2.setTextColor(Color.parseColor("#FFFFFF"))
+            window.statusBarColor = Color.parseColor("#396BCB")
+        }
     }
+
+    binding.btBuscar.setOnClickListener {
+
+        val cidade = binding.editBuscarCidade.text.toString()
+
+        binding.progressBar.visibility = View.VISIBLE
+
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://api.openweathermap.org/data/2.5/")
+            .build()
+            .create(Api::class.java)
+
+        retrofit.weatherMap(cidade,Const.API_KEY).enqueue(object : Callback<Main>{
+            override fun onResponse(call: Call<Main>, response: Response<Main>) {
+                if (response.isSuccessful){
+                    respostaServidor(response)
+                }else{
+                    Toast.makeText(applicationContext,"Cidade inválida!",Toast.LENGTH_SHORT).show()
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
+
+            override fun onFailure(call: Call<Main>, t: Throwable) {
+                Toast.makeText(applicationContext,"Erro fatal de servidor!",Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.GONE
+            }
+
+        })
+    }
+
+
+}
+
 
     override fun onResume() {
         super.onResume()
@@ -55,6 +109,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun respostaServidor(response: Response<Main>) {
 
         val main = response.body()!!.main
@@ -108,6 +163,35 @@ class MainActivity : AppCompatActivity() {
             binding.imgClima.setImageResource(R.drawable.trunderstorm)
         }
 
+        val descricaoClima = when(description){
+            "clear sky" -> {
+                "Céu limpo"
+            }
+            "few clouds" -> {
+                "Poucas nuvens"
+            }
+            "scattered clouds" -> {
+                "Nuvens dispersas"
+            }
+            "broken clouds" -> {
+                "Nuvens quebradas"
+            }
+            "shower rain" -> {
+                "chuva de banho"
+            }
+            "rain" -> {
+                "Chuva"
+            }
+            "thunderstorm" -> {
+                "Tempestade"
+            }
+            "snow" -> {
+                "Neve"
+            }
+            else -> {
+                "Névoa"
+            }
+        }
 
     binding.txtTemperatura.setText("${decimalFormat.format(temp_c)}°C")
         binding.txtPaisCidade.setText(" $pais - $name")
@@ -118,6 +202,3 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
-
-
-
