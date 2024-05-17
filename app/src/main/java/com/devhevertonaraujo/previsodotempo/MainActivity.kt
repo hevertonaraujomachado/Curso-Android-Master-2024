@@ -61,10 +61,11 @@ class MainActivity : AppCompatActivity() {
         val temp = main.get("temp").toString()
         val tempMin = main.get("temp_min").toString()
         val tempMax = main.get("temp_max").toString()
-        val humidity = main.get("humidity").toString()
+        val humidity = main.get("humidity").asString
 
         val sys = response.body()!!.sys
         val country = sys.get("country").toString()
+        var pais = ""
 
         val weather = response.body()!!.weather
         val main_weather = weather[0].main
@@ -77,10 +78,39 @@ class MainActivity : AppCompatActivity() {
         val tempMax_c = (tempMax.toDouble() - 273.15)
         val decimalFormat = DecimalFormat("00")
 
+        if (country.equals("BR")) {
+            pais = "Brasil"
+        } else if(country.equals("US")){
+            pais = "Estados Unidos"
+        }
+
+        if (main_weather.equals("Clouds") && description.equals("few clouds")) {
+            binding.imgClima.setImageResource(R.drawable.flewclouds)
+        }else if (main_weather.equals("Clouds") && description.equals("scattered clouds")){
+            binding.imgClima.setImageResource(R.drawable.clouds)
+        }else if (main_weather.equals("Clouds") && description.equals("broken clouds")){
+            binding.imgClima.setImageResource(R.drawable.brokenclouds)
+        }else if ( main_weather.equals("clouds") && description.equals("overcast clouds")){
+            binding.imgClima.setImageResource(R.drawable.brokenclouds)
+         }else if ( main_weather.equals("clear") && description.equals("clear sky")){
+        binding.imgClima.setImageResource(R.drawable.clearsky)
+
+    }else if ( main_weather.equals("Snow")){
+        binding.imgClima.setImageResource(R.drawable.snow)
+
+    }else if ( main_weather.equals("Rain")){
+        binding.imgClima.setImageResource(R.drawable.rain)
+
+    }else if ( main_weather.equals("Drizzie")){
+        binding.imgClima.setImageResource(R.drawable.rain)
+
+        }else if ( main_weather.equals("Thundertorm")){
+            binding.imgClima.setImageResource(R.drawable.trunderstorm)
+        }
 
 
-        binding.txtTemperatura.setText("${decimalFormat.format(temp_c)}°C")
-        binding.txtPaisCidade.setText(" $country - $name")
+    binding.txtTemperatura.setText("${decimalFormat.format(temp_c)}°C")
+        binding.txtPaisCidade.setText(" $pais - $name")
 
         binding.txtTituloInformacoes1.setText("Clima \n $description  \n\n Umidade \n $humidity")
         binding.txtTituloInformacoes2.setText("Temp.Min \n ${decimalFormat.format(tempMin_c)}°C \n\n Temp.Max \n ${decimalFormat.format(tempMax_c)}°C")
