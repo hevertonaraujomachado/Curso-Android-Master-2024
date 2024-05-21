@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "345676810414",
+    "project_id": "mvpestudo-7b532",
+    "storage_bucket": "mvpestudo-7b532.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345676810414:android:a3c5e544ce8e52d04e453f",
+        "android_client_info": {
+          "package_name": "com.devhevertonaraujo.mvp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArRpGpWYouYpCeQiuXFEgdISFta24EzV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
