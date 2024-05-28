@@ -1,6 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.gms.google-services")
+    id ("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+    
+
+
+
 }
 
 android {
@@ -36,6 +43,8 @@ android {
     viewBinding {
         enable = true
     }
+
+
 }
 
 dependencies {
@@ -51,5 +60,21 @@ dependencies {
     testImplementation("junit:junit:4.13")
     testImplementation("org.mockito:mockito-core:5.2.1")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2" )
+
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+
+
 }
+
+
+
+
+

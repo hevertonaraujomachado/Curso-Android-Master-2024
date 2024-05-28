@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "282064476644",
+    "project_id": "mvvmestudo22",
+    "storage_bucket": "mvvmestudo22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282064476644:android:cd6648904ba574f8be8ff1",
+        "android_client_info": {
+          "package_name": "com.devhevertonaraujo.appderestaurante"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjHjooTw4YtzQhYwm9cEk93cpLr6VzLwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282064476644:android:47e45f027d1d98e1be8ff1",
+        "android_client_info": {
+          "package_name": "com.devhevertonaraujo.mvvm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjHjooTw4YtzQhYwm9cEk93cpLr6VzLwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
