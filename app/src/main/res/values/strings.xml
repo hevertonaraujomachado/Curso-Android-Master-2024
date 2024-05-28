@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">App de Restaurante</string>
     <string name="txt_usuario">Usuário:</string>
+    <string name="bt_voltar">Voltar</string>
 </resources>

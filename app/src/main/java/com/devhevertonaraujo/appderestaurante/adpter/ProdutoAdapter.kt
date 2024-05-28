@@ -1,9 +1,11 @@
 package com.devhevertonaraujo.appderestaurante.adpter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.devhevertonaraujo.appderestaurante.DetalhesProduto
 import com.devhevertonaraujo.appderestaurante.databinding.ProdutoItemBinding
 import com.devhevertonaraujo.appderestaurante.model.Produto
 
@@ -22,6 +24,11 @@ class ProdutoAdapter(private val context: Context, private val listaProdutos: Mu
         holder.txtNome.text = listaProdutos[position].nome
         holder.txtDescricao.text = listaProdutos[position].descricao
         holder.txtPreco.text = listaProdutos[position].preco
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, DetalhesProduto::class.java)
+            context.startActivity(intent)
+        }
 
 
     }

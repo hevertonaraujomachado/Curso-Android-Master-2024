@@ -1,6 +1,7 @@
 package com.devhevertonaraujo.appderestaurante
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //simulando um vazamento de memoria
+        //MainActivity.context = this
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
@@ -54,4 +58,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-}
+  //  companion object{
+      //  lateinit var context: Context
+    }
+
